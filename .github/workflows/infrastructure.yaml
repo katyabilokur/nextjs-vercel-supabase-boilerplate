@@ -14,13 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        name: Checkout
       - uses: hashicorp/setup-terraform@v3
+        name: Install terraform v1.9.2
         with:
           terraform_version: "1.9.2"
-      - name: Terraform Init
+      - name: Terraform init
         run: terraform init
-      - name: Terraform Validate
+      - name: Terraform validate
         run: terraform validate
-      - name: Terraform Plan
+      - name: Terraform plan
         run: terraform plan
         continue-on-error: false
