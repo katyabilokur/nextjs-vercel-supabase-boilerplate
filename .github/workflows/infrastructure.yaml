@@ -1,0 +1,26 @@
+name: infrastructure
+
+on: push
+
+env:
+  GOOGLE_BACKEND_CREDENTIALS: ${{ secrets.GOOGLE_BACKEND_CREDENTIALS }}
+
+defaults:
+  run:
+    working-directory: ./terraform
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.2"
+      - name: Terraform Init
+        run: terraform init
+      - name: Terraform Validate
+        run: terraform validate -no-color
+      - name: Terraform Plan
+        run: terraform plan -no-color
+        continue-on-error: false
