@@ -24,5 +24,7 @@ jobs:
       - name: Terraform validate
         run: terraform validate
       - name: Terraform plan
-        run: terraform plan
+        run: terraform plan -out default.tfplan
         continue-on-error: false
+      - name: Terraform apply
+        run: terraform apply default.tfplan
