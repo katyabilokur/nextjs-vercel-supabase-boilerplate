@@ -4,6 +4,7 @@ on: push
 
 env:
   GOOGLE_BACKEND_CREDENTIALS: ${{ secrets.GOOGLE_BACKEND_CREDENTIALS }}
+  VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
 
 defaults:
   run:
